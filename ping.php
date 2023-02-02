@@ -16,7 +16,7 @@ if ($socket === false) {
     errorResponse('can\'t open socket');
 }
 
-socket_set_option($socket, SOL_SOCKET, SO_RCVTIMEO, array('sec' => 1, 'usec' => 0));
+socket_set_option($socket, SOL_SOCKET, SO_RCVTIMEO, ['sec' => 1, 'usec' => 0]);
 socket_connect($socket, $ip, 0);
 
 
