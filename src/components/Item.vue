@@ -13,7 +13,7 @@ const paused = ref(false);
 
 const hostStatus = reactive({ alive: false, delay: null, error: null });
 
-const API_URL = "ping.php?ip=";
+const API_URL = "http://127.0.0.1:8080/ping.php?ip=";
 
 let interval = null;
 
@@ -61,7 +61,7 @@ onMounted(() => {
     <span class="float-end">
       [<a href="#" @click.prevent="paused = !paused">
         <img :src="paused ? '/play.png' : '/pause.png'" width="16" /> </a
-      >] [<a href="#" @click.prevent="removeItem">X</a>]
+      >] [<a href="#" @click.prevent="removeItem"><img src="/trash.png" width="16" /></a>]
     </span>
   </div>
 </template>
