@@ -13,7 +13,7 @@ const paused = ref(false);
 
 const hostStatus = reactive({ alive: false, delay: null, error: null });
 
-const API_URL = "http://127.0.0.1:8080/ping.php?ip=";
+const API_URL = `${import.meta.env.VITE_PING_API_URL}`;
 
 let interval = null;
 
