@@ -1,9 +1,9 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import AddItem from "./components/AddItem.vue";
 import Item from "./components/Item.vue";
 
-const items = ref(null);
+const items = ref(JSON.parse(localStorage.getItem('items') || '[]'));
 
 function itemAdded(value) {
   items.value.push(value);
@@ -16,10 +16,6 @@ function itemRemoved(index) {
     localStorage.items = JSON.stringify(items.value);
   }
 }
-
-onMounted(() => {
-  items.value = localStorage.items ? JSON.parse(localStorage.items) : [];
-});
 </script>
 
 <template>
