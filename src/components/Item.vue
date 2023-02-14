@@ -13,15 +13,15 @@ const paused = ref(false);
 
 const hostStatus = reactive({ alive: false, delay: null, error: null });
 
-const API_URL = `${import.meta.env.VITE_PING_API_URL}`;
+const API_URL = import.meta.env.VITE_PING_API_URL;
 
 let interval = null;
 
-async function ping() {
+function ping() {
+  
   if (paused.value) return;
 
-  await axios
-    .get(API_URL + props.item.host)
+  axios.get(API_URL + props.item.host)
     .then((res) => {
       let data = res.data;
       hostStatus.error = null;
@@ -61,7 +61,9 @@ onMounted(() => {
     <span class="float-end">
       [<a href="#" @click.prevent="paused = !paused">
         <img :src="paused ? '/play.png' : '/pause.png'" width="16" /> </a
-      >] [<a href="#" @click.prevent="removeItem"><img src="/trash.png" width="16" /></a>]
+      >] [<a href="#" @click.prevent="removeItem"
+        ><img src="/trash.png" width="16" /></a
+      >]
     </span>
   </div>
 </template>
